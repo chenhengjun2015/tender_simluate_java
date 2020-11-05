@@ -28,9 +28,9 @@ public class SimluateTenderController  {
     ISimluateTenderService simluateTenderService;
 
     @PostMapping("/queryAll")
-    public String queryAll(){
+    public List queryAll(){
         List<SimluateTender> list =simluateTenderService.list();
         list.forEach(System.out::println);
-        return null;
+        return list;
     }
 }

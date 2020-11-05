@@ -34,4 +34,37 @@ public class Result<T> {
     public void setData(T data) {
         this.data = data;
     }
+
+    private void setResultCode(ResultCode resultCode){
+        this.code = resultCode.code();
+        this.msg = resultCode.msg();
+    }
+    public static Result succ(){
+        Result r = new Result();
+        r.setResultCode(ResultCode.SUCCESS);
+        return r;
+    }
+
+    public static Result succ(Object data){
+        Result r= new Result();
+        r.setData(data);
+        r.setResultCode(ResultCode.SUCCESS);
+        return r;
+    }
+
+    public static Result fail(Integer code,String msg){
+        Result r = new Result();
+        r.setCode(code);
+        r.setMsg(msg);
+        return r;
+    }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }
