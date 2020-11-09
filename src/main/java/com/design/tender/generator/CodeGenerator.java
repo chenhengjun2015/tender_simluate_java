@@ -52,7 +52,7 @@ public class CodeGenerator {
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:mysql://localhost:3306/tender_capital?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8");
         // dsc.setSchemaName("public");
-        dsc.setDriverName("com.mysql.jdbc.Driver");
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("123456");
         mpg.setDataSource(dsc);
@@ -118,21 +118,21 @@ public class CodeGenerator {
         mpg.setTemplate(templateConfig);
 
         // 策略配置
-//        StrategyConfig strategy = new StrategyConfig();
-//        strategy.setNaming(NamingStrategy.underline_to_camel);
-//        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
+        StrategyConfig strategy = new StrategyConfig();
+        strategy.setNaming(NamingStrategy.underline_to_camel);
+        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
 //        strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
-//        strategy.setEntityLombokModel(true);
-//        strategy.setRestControllerStyle(true);
-//        // 公共父类
+        strategy.setEntityLombokModel(true);
+        strategy.setRestControllerStyle(true);
+        // 公共父类
 //        strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
-//        // 写于父类中的公共字段
-//        strategy.setSuperEntityColumns("id");
-//        strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
-//        strategy.setControllerMappingHyphenStyle(true);
-//        strategy.setTablePrefix(pc.getModuleName() + "_");
-//        mpg.setStrategy(strategy);
-//        mpg.setTemplateEngine(new FreemarkerTemplateEngine());
+        // 写于父类中的公共字段
+        strategy.setSuperEntityColumns("id");
+        strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
+        strategy.setControllerMappingHyphenStyle(true);
+        strategy.setTablePrefix(pc.getModuleName() + "_");
+        mpg.setStrategy(strategy);
+        mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
     }
 }

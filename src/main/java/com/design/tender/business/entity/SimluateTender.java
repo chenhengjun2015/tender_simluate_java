@@ -1,5 +1,7 @@
 package com.design.tender.business.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -18,12 +20,11 @@ public class SimluateTender  {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer pid;
 
-    /**
-     * 模拟项目名称
-     */
-    private String projname;
+    @TableId(type = IdType.AUTO)
+    private int id;
+
+    private Integer pid;
 
     /**
      * 企业编号
@@ -46,4 +47,9 @@ public class SimluateTender  {
     private String fluctuate2;
 
 
+
+    /**
+     *
+     */
+    private String capital;
 }

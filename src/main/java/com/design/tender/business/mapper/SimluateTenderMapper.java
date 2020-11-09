@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author chj
  * @since 2020-11-04
  */
-public interface SimluateTenderMapper extends BaseMapper<SimluateTender> {
+public interface SimluateTenderMapper extends SuperMapper<SimluateTender> {
 
 }
