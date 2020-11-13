@@ -33,6 +33,7 @@ public class SimluateTenderController  {
 
     @RequestMapping(value = "/queryAll",method =RequestMethod.POST)
     public List queryAll(){
+        simluateTenderService = null;
         List<SimluateTender> list =simluateTenderService.list();
         list.forEach(System.out::println);
         return list;

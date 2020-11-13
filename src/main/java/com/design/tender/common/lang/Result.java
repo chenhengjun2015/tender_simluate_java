@@ -52,7 +52,7 @@ public class Result<T> {
         return r;
     }
 
-    public static Result fail(Integer code,String msg){
+    public static Result err(Integer code,String msg){
         Result r = new Result();
         r.setCode(code);
         r.setMsg(msg);

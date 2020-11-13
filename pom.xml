@@ -77,7 +77,13 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.30</version>
         </dependency>
-<!--        <dependency>-->
+
+        <dependency> <!-- 引入log4j2依赖 -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+
+        <!--        <dependency>-->
 <!--            <groupId>org.apache.tomcat</groupId>-->
 <!--            <artifactId>tomcat-juli</artifactId>-->
 <!--            <version>${tomcat.version}</version>-->
@@ -88,4 +94,43 @@
 <!--            <version>${tomcat.version}</version>-->
 <!--        </dependency>-->
     </dependencies>
+
+    <properties>
+        <it.skip>true</it.skip>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <skip>${it.skip}</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>pre-integration-test</id>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${it.skip}</skip>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-integration-test</id>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${it.skip}</skip>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
